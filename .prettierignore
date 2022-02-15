@@ -1,0 +1,5 @@
+# Ignore artifacts:
+.github/actions/deploy
+coverage
+node_modules
+.aws-sam

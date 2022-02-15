@@ -1,0 +1,6 @@
+list:
+  handler: src/handlers/customer/list/handler.handler
+  events:
+    - http:
+        path: /{merchantId}
+        method: get
