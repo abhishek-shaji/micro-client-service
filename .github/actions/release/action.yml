@@ -1,0 +1,26 @@
+name: Release
+description: Create a new release and publish to the npm registry
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: https://npm.pkg.github.com
+        scope: '@abhishek-shaji'
+        cache: yarn
+        cache-dependency-path: './yarn.lock'
+
+    - name: Install NPM dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
+      env:
+        NODE_AUTH_TOKEN: ${{ env.GLOBAL_GITHUB_TOKEN }}
+
+    - name: Release
+      shell: bash
+      run: npm run release
+      env:
+        GITHUB_TOKEN: ${{ env.GLOBAL_GITHUB_TOKEN }}

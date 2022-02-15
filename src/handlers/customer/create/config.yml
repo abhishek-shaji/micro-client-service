@@ -1,0 +1,6 @@
+create:
+  handler: src/handlers/customer/create/handler.handler
+  events:
+    - http:
+        path: /{merchantId}
+        method: post
