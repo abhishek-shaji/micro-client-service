@@ -1,0 +1,37 @@
+name: Deploy
+description: Deploy functions to AWS Lambda
+
+inputs:
+  env:
+    description: Environment
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: https://npm.pkg.github.com
+        scope: '@abhishek-shaji'
+        cache: yarn
+        cache-dependency-path: './yarn.lock'
+
+    - name: Install Serverless Framework
+      shell: bash
+      run: yarn global add serverless
+
+    - name: Serverless AWS authentication
+      shell: bash
+      run: serverless config credentials --provider aws --key ${{ env.AWS_KEY }} --secret ${{ env.AWS_SECRET }}
+
+    - name: Install NPM dependencies
+      shell: bash
+      run: yarn install --frozen-lockfile
+      env:
+        NODE_AUTH_TOKEN: ${{ env.GLOBAL_GITHUB_TOKEN }}
+
+    - name: Deploy Lambda functions
+      shell: bash
+      run: serverless deploy --stage ${{ inputs.env }}

@@ -1,0 +1,6 @@
+delete:
+  handler: src/handlers/variant/delete/handler.handler
+  events:
+    - http:
+        path: /variant/{merchantId}/{variantId}
+        method: delete

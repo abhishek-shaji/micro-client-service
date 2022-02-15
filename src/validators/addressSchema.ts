@@ -1,7 +1,15 @@
 import * as yup from 'yup';
 
-export const customerSchema = yup.object().shape({
-  firstname: yup.string().required(),
-  lastname: yup.string().required()
-  address: address
-});
+export const addressSchema = yup
+  .object()
+  .shape({
+    addressLineOne: yup.string().required(),
+    doorNumber: yup.string(),
+    addressLineTwo: yup.string(),
+    postalCode: yup.string(),
+    placeId: yup.string(),
+    city: yup.string().required(),
+    country: yup.string(),
+  })
+  .noUnknown(true)
+  .strict();

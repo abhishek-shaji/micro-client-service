@@ -1,0 +1,6 @@
+update:
+  handler: src/handlers/customer/update/handler.handler
+  events:
+    - http:
+        path: /{merchantId}/{customerId}
+        method: put
