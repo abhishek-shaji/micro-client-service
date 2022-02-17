@@ -22,6 +22,8 @@ jobs:
     needs: release
     steps:
       - uses: actions/checkout@v1
+        with:
+          branch: master
 
       - name: Deploy Service to AWS Lambda
         uses: ./.github/actions/deploy
