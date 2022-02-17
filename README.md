@@ -1,4 +1,4 @@
-# micro-merchant-serivce
+# micro-customer-service
 
 This project contains source code for managing merchants
 

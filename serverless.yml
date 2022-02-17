@@ -13,8 +13,15 @@ provider:
 plugins:
   - serverless-esbuild
   - serverless-iam-roles-per-function
+  - serverless-domain-manager
 
 custom:
+  customDomain:
+    domainName: api-${opt:stage, 'dev'}.abhishek.pl
+    basePath: customer
+    stage: ${opt:stage, 'dev'}
+    createRoute53Record: false
+
   esbuild:
     bundle: true
     minify: true
