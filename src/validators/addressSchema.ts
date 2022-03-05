@@ -8,8 +8,9 @@ export const addressSchema = yup
     addressLineTwo: yup.string(),
     postalCode: yup.string(),
     placeId: yup.string(),
+    deliveryInstructions: yup.string(),
     city: yup.string().required(),
-    country: yup.string(),
+    country: yup.string().required(),
   })
   .noUnknown(true)
   .strict();

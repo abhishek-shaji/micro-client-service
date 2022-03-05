@@ -20,7 +20,7 @@ export const handleUpdateCustomer: AWSProxyHandler = async (event) => {
 
   const customer = await findCustomerById(customerId);
 
-  if (secret !== customer.secret) {
+  if (secret !== customer.token) {
     throw new UnauthorizedException('Invalid secret');
   }
 

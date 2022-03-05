@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@abhishek-shaji/micro-common@^1.27.0":
-  version "1.27.0"
-  resolved "https://npm.pkg.github.com/download/@abhishek-shaji/micro-common/1.27.0/6a911a37afa9bb5a4cba6211be9f132caada0d5a75df2e7a30342520ae8577ed#f4564c1a91eb09b3da1dbbe889dab8e8fef3f29e"
-  integrity sha512-LogprcgqeEmDcqRTAQnHRHM9SD6cLv22sVvfG1GLB/cM6KKt9aGh5Rx0PcMnRv3yg0vOQxagj2Vh/2u87mBYGw==
+"@abhishek-shaji/micro-common@^1.28.0":
+  version "1.29.0"
+  resolved "https://npm.pkg.github.com/download/@abhishek-shaji/micro-common/1.29.0/0d381dd8e4b361d0d9b63a9d8173e5448e2e11d94609352da1a3f01badcd43d5#2583d57396c5320b728b3d626203b8ae58c7b764"
+  integrity sha512-Ro2UHtCND2sQ2HAA43UfFusAqnf2bpsC2r9IClOt54+5KXl0aE4m/PJebExzK5mwF4RRuxwaj+shuw2E+S22gg==
   dependencies:
     "@middy/core" "^2.5.7"
     "@middy/http-json-body-parser" "^2.5.7"
@@ -4159,6 +4159,11 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
+
+short-unique-id@^4.4.4:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/short-unique-id/-/short-unique-id-4.4.4.tgz#a45df68303bbd2dbb5785ed7708e891809c9cb7a"
+  integrity sha512-oLF1NCmtbiTWl2SqdXZQbo5KM1b7axdp0RgQLq8qCBBLoq+o3A5wmLrNM6bZIh54/a8BJ3l69kTXuxwZ+XCYuw==
 
 side-channel@^1.0.4:
   version "1.0.4"

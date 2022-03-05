@@ -12,7 +12,7 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "@abhishek-shaji/micro-common": "^1.27.0",
+    "@abhishek-shaji/micro-common": "^1.28.0",
     "@middy/core": "^2.5.7",
     "@middy/http-json-body-parser": "^2.5.7",
     "@middy/http-response-serializer": "^2.5.7",
@@ -31,6 +31,7 @@
     "mongoose": "^6.2.0",
     "mongoose-intl": "^3.3.0",
     "mongoose-paginate-v2": "^1.6.2",
+    "short-unique-id": "^4.4.4",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },

@@ -7,6 +7,7 @@ import { validatePathParam } from '@abhishek-shaji/micro-common/middlewares/vali
 import { formatCustomer } from '../../../formatters/formatCustomer';
 import { createCustomer } from '../../../services/customerService';
 import { customerSchema } from '../../../validators/customerSchema';
+import { validateRecaptcha } from '../../../middleware/validateRecaptcha';
 
 export const handleCreateCustomer: AWSProxyHandler = async (event) => {
   const { merchantId }: any = event.pathParameters;
@@ -22,12 +23,13 @@ export const handleCreateCustomer: AWSProxyHandler = async (event) => {
   });
 
   return createResponse(StatusCodes.CREATED, {
-    secret: customer.secret,
+    token: customer.token,
     customer: formatCustomer(customer),
   });
 };
 
 export const handler = compose(
   validatePathParam('merchantId'),
+  () => validateRecaptcha('CreateCustomer'),
   validateRequestBody(customerSchema)
 )(handleCreateCustomer);

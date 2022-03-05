@@ -1,20 +1,15 @@
-import { Document, model, PaginateModel, Schema, SchemaOptions } from 'mongoose';
-import bcryptjs from 'bcryptjs';
+import { Document, model, PaginateModel, Schema } from 'mongoose';
+import ShortUniqueId from 'short-unique-id';
+import mongoosePaginate from 'mongoose-paginate-v2';
 import { User } from '@abhishek-shaji/micro-common/models/User';
 import {
   deletionTrait,
   onDelete,
   onRecover,
 } from '@abhishek-shaji/micro-common/traits/DeletionTrait';
-import {
-  publisherTrait,
-  onPublish,
-  onUnPublish,
-} from '@abhishek-shaji/micro-common/traits/PublisherTrait';
-import mongoosePaginate from 'mongoose-paginate-v2';
+import { publisherTrait } from '@abhishek-shaji/micro-common/traits/PublisherTrait';
 import { Address } from '@abhishek-shaji/micro-common/models/Address';
 import { Merchant } from '@abhishek-shaji/micro-common/models/Merchant';
-import { randomUUID } from 'crypto';
 
 class Customer extends Document {
   firstname: string;
@@ -23,7 +18,7 @@ class Customer extends Document {
   phoneNumber: string;
   address: Address;
   merchant: Merchant;
-  secret: string;
+  token: string;
 
   deletedAt: Date;
   deletedBy: User;
@@ -56,13 +51,17 @@ const schema = new Schema<Customer>(
     },
     merchant: {
       type: Schema.Types.ObjectId,
-      ref: 'Mercahnt',
+      ref: 'Merchant',
       required: true,
     },
-    secret: {
+    token: {
       type: String,
       required: true,
-      default: () => Buffer.from(`${randomUUID()}-${randomUUID()}`).toString('base64'),
+      default: () => {
+        const uid = new ShortUniqueId({ length: 45 });
+
+        return uid();
+      },
     },
   },
   {
