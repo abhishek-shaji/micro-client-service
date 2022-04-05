@@ -8,17 +8,23 @@ import { createPaginatedResponse } from '@abhishek-shaji/micro-common/utils/crea
 import { Namespace } from '@abhishek-shaji/micro-common/enum/Namespace';
 
 import { formatCustomer } from '../../../formatters/formatCustomer';
-import { getCustomers } from '../../../services/customerService';
+import { OrderService } from '../../../services/OrderService';
 
 export const handleGetCustomer: AWSProxyHandler = async (event) => {
   const { merchantId }: any = event.pathParameters;
   const { page = 1, limit = 10 }: any = event.queryStringParameters || {};
-  const customers = await getCustomers({ merchant: merchantId }, { page, limit });
 
-  return createPaginatedResponse(StatusCodes.OK, customers, formatCustomer);
+  const orderService = new OrderService();
+
+  const result: any = await orderService.findCustomersByConfirmedOrders(merchantId, {
+    page,
+    limit,
+  });
+
+  return createPaginatedResponse(StatusCodes.OK, result, formatCustomer);
 };
 
 export const handler = compose(
   validatePathParam('merchantId'),
-  isGranted(Namespace.customerList, AccessPermission.read)
+  isGranted(Namespace.customer, AccessPermission.read)
 )(handleGetCustomer);

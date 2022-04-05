@@ -1,13 +1,7 @@
-import { Document, model, PaginateModel, Schema } from 'mongoose';
+import { AggregatePaginateModel, Document, model, PaginateModel, Schema } from 'mongoose';
 import ShortUniqueId from 'short-unique-id';
-import mongoosePaginate from 'mongoose-paginate-v2';
-import { User } from '@abhishek-shaji/micro-common/models/User';
-import {
-  deletionTrait,
-  onDelete,
-  onRecover,
-} from '@abhishek-shaji/micro-common/traits/DeletionTrait';
-import { publisherTrait } from '@abhishek-shaji/micro-common/traits/PublisherTrait';
+import mongoosePaginate from 'mongoose-aggregate-paginate-v2';
+
 import { Address } from '@abhishek-shaji/micro-common/models/Address';
 import { Merchant } from '@abhishek-shaji/micro-common/models/Merchant';
 
@@ -19,15 +13,10 @@ class Customer extends Document {
   address: Address;
   merchant: Merchant;
   token: string;
-
-  deletedAt: Date;
-  deletedBy: User;
 }
 
 const schema = new Schema<Customer>(
   {
-    ...deletionTrait,
-    ...publisherTrait,
     firstname: {
       type: String,
       required: true,
@@ -71,9 +60,6 @@ const schema = new Schema<Customer>(
 
 schema.plugin(mongoosePaginate);
 
-schema.static('archive', onDelete);
-schema.static('recover', onRecover);
-
-const CustomerModel = model<Customer, PaginateModel<Customer>>('Customer', schema);
+const CustomerModel = model<Customer, AggregatePaginateModel<Customer>>('Customer', schema);
 
 export { Customer, CustomerModel };

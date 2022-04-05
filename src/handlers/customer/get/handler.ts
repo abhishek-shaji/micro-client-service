@@ -4,7 +4,7 @@ import { compose, createResponse } from '@abhishek-shaji/micro-common/utils';
 import { validatePathParam } from '@abhishek-shaji/micro-common/middlewares/validatePathParam';
 import { AWSProxyHandler } from '@abhishek-shaji/micro-common/types';
 
-import { findCustomerById } from '../../../services/customerService';
+import { CustomerService } from '../../../services/CustomerService';
 import { formatCustomer } from '../../../formatters/formatCustomer';
 
 export const handleGetCustomer: AWSProxyHandler = async (event) => {
@@ -15,7 +15,9 @@ export const handleGetCustomer: AWSProxyHandler = async (event) => {
     throw new UnauthorizedException();
   }
 
-  const customer = await findCustomerById(customerId);
+  const customerService = new CustomerService();
+
+  const customer = await customerService.findCustomerById(customerId);
 
   if (secret !== customer.token) {
     throw new UnauthorizedException('Invalid secret');

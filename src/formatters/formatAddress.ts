@@ -6,6 +6,8 @@ export const formatAddress = ({
   addressLineTwo,
   city,
   country,
+  postalCode,
+  doorNumber,
   placeId,
 }: Address) => ({
   id: _id,
@@ -13,5 +15,7 @@ export const formatAddress = ({
   addressLineTwo,
   city,
   country,
+  postalCode,
+  doorNumber,
   placeId,
 });
