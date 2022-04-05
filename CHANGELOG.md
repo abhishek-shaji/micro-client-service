@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.1.0...v1.2.0) (2022-04-05)
+
+
+### Features
+
+* **develop:** addign customer secret and cors ([bbfbe44](https://github.com/abhishek-shaji/micro-customer-service/commit/bbfbe444b30befcab45fd82576d0e885ef98dded))
+* **master:** customer list with total amount spent and total orders ([b41ad09](https://github.com/abhishek-shaji/micro-customer-service/commit/b41ad0919345d40ee7cfd77d3e5f96d2cd681170))
+
 # [1.1.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.0.0...v1.1.0) (2022-02-17)
 
 
