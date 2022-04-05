@@ -8,11 +8,15 @@ export const formatCustomer = ({
   email,
   phoneNumber,
   address,
-}: Customer) => ({
+  totalSpend,
+  orderCount,
+}: any) => ({
   id: _id,
   firstname,
   lastname,
   email,
   phoneNumber,
   address: formatAddress(address),
+  totalSpend,
+  orderCount,
 });

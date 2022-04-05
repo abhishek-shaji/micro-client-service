@@ -4,3 +4,14 @@ create:
     - http:
         path: /{merchantId}
         method: post
+        cors:
+          origin: '*' # <-- Specify allowed origin
+          headers: # <-- Specify allowed headers
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Recaptcha-Token
+            - X-Amz-User-Agent
+          allowCredentials: false

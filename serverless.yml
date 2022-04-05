@@ -9,6 +9,7 @@ provider:
     DATABASE_URL: ${ssm:/database-url-${opt:stage, 'dev'}}
     JWT_SECRET: ${ssm:/jwt-secret-${opt:stage, 'dev'}}
     S3_BUCKET_NAME: micro-uploaded-files-${opt:stage, 'dev'}
+    RECAPTHA_PRIVATE_KEY: ${ssm:/recaptcha-private-key-${opt:stage, 'dev'}}
 
 plugins:
   - serverless-esbuild

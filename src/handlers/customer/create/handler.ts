@@ -5,14 +5,17 @@ import { AWSProxyHandler } from '@abhishek-shaji/micro-common/types';
 import { validatePathParam } from '@abhishek-shaji/micro-common/middlewares/validatePathParam';
 
 import { formatCustomer } from '../../../formatters/formatCustomer';
-import { createCustomer } from '../../../services/customerService';
+import { CustomerService } from '../../../services/CustomerService';
 import { customerSchema } from '../../../validators/customerSchema';
+import { validateRecaptcha } from '../../../middleware/validateRecaptcha';
 
 export const handleCreateCustomer: AWSProxyHandler = async (event) => {
   const { merchantId }: any = event.pathParameters;
   const { firstname, lastname, email, phoneNumber, address }: any = event.body;
 
-  const customer = await createCustomer({
+  const customerService = new CustomerService();
+
+  const customer = await customerService.createCustomer({
     firstname,
     lastname,
     address,
@@ -22,12 +25,13 @@ export const handleCreateCustomer: AWSProxyHandler = async (event) => {
   });
 
   return createResponse(StatusCodes.CREATED, {
-    secret: customer.secret,
+    token: customer.token,
     customer: formatCustomer(customer),
   });
 };
 
 export const handler = compose(
   validatePathParam('merchantId'),
+  () => validateRecaptcha('CreateCustomer'),
   validateRequestBody(customerSchema)
 )(handleCreateCustomer);

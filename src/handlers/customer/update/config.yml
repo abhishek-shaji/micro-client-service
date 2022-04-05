@@ -4,3 +4,15 @@ update:
     - http:
         path: /{merchantId}/{customerId}
         method: put
+        cors:
+          origin: '*' # <-- Specify allowed origin
+          headers: # <-- Specify allowed headers
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Recaptcha-Token
+            - X-Amz-User-Agent
+            - X-Customer-Secret
+          allowCredentials: false

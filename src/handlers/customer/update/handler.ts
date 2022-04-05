@@ -6,7 +6,7 @@ import { AWSProxyHandler } from '@abhishek-shaji/micro-common/types';
 import { validatePathParam } from '@abhishek-shaji/micro-common/middlewares/validatePathParam';
 
 import { formatCustomer } from '../../../formatters/formatCustomer';
-import { findCustomerById, updateCustomer } from '../../../services/customerService';
+import { CustomerService } from '../../../services/CustomerService';
 import { customerSchema } from '../../../validators/customerSchema';
 
 export const handleUpdateCustomer: AWSProxyHandler = async (event) => {
@@ -18,13 +18,15 @@ export const handleUpdateCustomer: AWSProxyHandler = async (event) => {
     throw new UnauthorizedException();
   }
 
-  const customer = await findCustomerById(customerId);
+  const customerService = new CustomerService();
 
-  if (secret !== customer.secret) {
+  const customer = await customerService.findCustomerById(customerId);
+
+  if (secret !== customer.token) {
     throw new UnauthorizedException('Invalid secret');
   }
 
-  const updated = await updateCustomer(customer, {
+  const updated = await customerService.updateCustomer(customer, {
     firstname,
     lastname,
     email,

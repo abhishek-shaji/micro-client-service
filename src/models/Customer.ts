@@ -1,20 +1,9 @@
-import { Document, model, PaginateModel, Schema, SchemaOptions } from 'mongoose';
-import bcryptjs from 'bcryptjs';
-import { User } from '@abhishek-shaji/micro-common/models/User';
-import {
-  deletionTrait,
-  onDelete,
-  onRecover,
-} from '@abhishek-shaji/micro-common/traits/DeletionTrait';
-import {
-  publisherTrait,
-  onPublish,
-  onUnPublish,
-} from '@abhishek-shaji/micro-common/traits/PublisherTrait';
-import mongoosePaginate from 'mongoose-paginate-v2';
+import { AggregatePaginateModel, Document, model, PaginateModel, Schema } from 'mongoose';
+import ShortUniqueId from 'short-unique-id';
+import mongoosePaginate from 'mongoose-aggregate-paginate-v2';
+
 import { Address } from '@abhishek-shaji/micro-common/models/Address';
 import { Merchant } from '@abhishek-shaji/micro-common/models/Merchant';
-import { randomUUID } from 'crypto';
 
 class Customer extends Document {
   firstname: string;
@@ -23,16 +12,11 @@ class Customer extends Document {
   phoneNumber: string;
   address: Address;
   merchant: Merchant;
-  secret: string;
-
-  deletedAt: Date;
-  deletedBy: User;
+  token: string;
 }
 
 const schema = new Schema<Customer>(
   {
-    ...deletionTrait,
-    ...publisherTrait,
     firstname: {
       type: String,
       required: true,
@@ -56,13 +40,17 @@ const schema = new Schema<Customer>(
     },
     merchant: {
       type: Schema.Types.ObjectId,
-      ref: 'Mercahnt',
+      ref: 'Merchant',
       required: true,
     },
-    secret: {
+    token: {
       type: String,
       required: true,
-      default: () => Buffer.from(`${randomUUID()}-${randomUUID()}`).toString('base64'),
+      default: () => {
+        const uid = new ShortUniqueId({ length: 45 });
+
+        return uid();
+      },
     },
   },
   {
@@ -72,9 +60,6 @@ const schema = new Schema<Customer>(
 
 schema.plugin(mongoosePaginate);
 
-schema.static('archive', onDelete);
-schema.static('recover', onRecover);
-
-const CustomerModel = model<Customer, PaginateModel<Customer>>('Customer', schema);
+const CustomerModel = model<Customer, AggregatePaginateModel<Customer>>('Customer', schema);
 
 export { Customer, CustomerModel };
