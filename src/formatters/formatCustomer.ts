@@ -1,5 +1,4 @@
 import { formatAddress } from './formatAddress';
-import { Customer } from '../models/Customer';
 
 export const formatCustomer = ({
   _id,
@@ -10,6 +9,9 @@ export const formatCustomer = ({
   address,
   totalSpend,
   orderCount,
+  createdAt,
+  lastOrderedAt,
+  paymentMethodUsage,
 }: any) => ({
   id: _id,
   firstname,
@@ -19,4 +21,7 @@ export const formatCustomer = ({
   address: formatAddress(address),
   totalSpend,
   orderCount,
+  createdAt,
+  lastOrderedAt,
+  paymentMethodUsage,
 });

@@ -60,30 +60,85 @@ class OrderService {
         },
         {
           $group: {
-            _id: 'customer.email',
+            _id: '$customer.email',
             customer: {
               $last: '$$ROOT.customer',
             },
+            blikPaymentCount: {
+              $sum: {
+                $cond: [{ $eq: ['$payment.method', 'BLIK'] }, 1, 0],
+              },
+            },
+            cardPaymentCount: {
+              $sum: {
+                $cond: [{ $eq: ['$payment.method', 'CARD'] }, 1, 0],
+              },
+            },
+            cashPaymentCount: {
+              $sum: {
+                $cond: [{ $eq: ['$payment.method', 'CASH'] }, 1, 0],
+              },
+            },
+            terminalPaymentCount: {
+              $sum: {
+                $cond: [{ $eq: ['$payment.method', 'TERMINAL'] }, 1, 0],
+              },
+            },
             totalSpend: {
               $sum: '$payment.total',
+            },
+            createdAt: {
+              $first: '$$ROOT.customer.createdAt',
+            },
+            lastOrderedAt: {
+              $last: '$$ROOT.createdAt',
             },
             orderCount: {
               $sum: 1,
             },
           },
         },
+        {
+          $addFields: {
+            paymentMethodUsage: [
+              {
+                type: 'BLIK',
+                count: '$blikPaymentCount',
+              },
+              {
+                type: 'CASH',
+                count: '$cashPaymentCount',
+              },
+              {
+                type: 'TERMINAL',
+                count: '$terminalPaymentCount',
+              },
+              {
+                type: 'CARD',
+                count: '$cardPaymentCount',
+              },
+            ],
+          },
+        },
+        {
+          $unset: [
+            '_id',
+            'blikPaymentCount',
+            'cashPaymentCount',
+            'terminalPaymentCount',
+            'cardPaymentCount',
+          ],
+        },
       ]),
       options
     );
 
-    console.log(results);
-
     return {
       ...results,
       docs: results.docs.map((result: any) => ({
+        ...result,
         ...result.customer,
-        totalSpend: result.totalSpend,
-        orderCount: result.orderCount,
+        customer: undefined,
       })),
     };
   }
