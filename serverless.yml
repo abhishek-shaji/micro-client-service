@@ -17,8 +17,12 @@ plugins:
   - serverless-domain-manager
 
 custom:
+  domainName:
+    dev: api-dev.shophost.io
+    prod: api.shophost.io
+
   customDomain:
-    domainName: api-${opt:stage, 'dev'}.abhishek.pl
+    domainName: ${self:custom.domainName.${opt:stage, 'dev'}}
     basePath: customer
     stage: ${opt:stage, 'dev'}
     createRoute53Record: false

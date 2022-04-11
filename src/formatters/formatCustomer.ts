@@ -9,6 +9,9 @@ export const formatCustomer = ({
   address,
   totalSpend,
   orderCount,
+  createdAt,
+  lastOrderedAt,
+  paymentMethodUsage,
 }: any) => ({
   id: _id,
   firstname,
@@ -18,4 +21,7 @@ export const formatCustomer = ({
   address: formatAddress(address),
   totalSpend,
   orderCount,
+  createdAt,
+  lastOrderedAt,
+  paymentMethodUsage,
 });
