@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.2.0...v1.3.0) (2022-04-11)
+
+
+### Features
+
+* **master:** adding new domain name ([ac675ce](https://github.com/abhishek-shaji/micro-customer-service/commit/ac675ce745f68fcce1138a9f6f79c3b2a858128c))
+* **master:** customer list with total amount spent and total orders ([f20b37a](https://github.com/abhishek-shaji/micro-customer-service/commit/f20b37ad64244e9646fc6605574ab1d98bd1ddfb))
+
 # [1.2.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.1.0...v1.2.0) (2022-04-05)
 
 
