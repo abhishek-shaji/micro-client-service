@@ -1,5 +1,6 @@
 import { OrderModel } from '../models/Order';
 import { AggregatePaginateResult } from 'mongoose';
+import * as mongoose from 'mongoose';
 import { Customer } from '../models/Customer';
 
 class OrderService {
@@ -17,6 +18,7 @@ class OrderService {
             customer: {
               $ne: null,
             },
+            merchant: new mongoose.Types.ObjectId(merchantId),
           },
         },
         {

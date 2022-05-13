@@ -10,7 +10,7 @@ class Customer extends Document {
   lastname: string;
   email: string;
   phoneNumber: string;
-  address: Address;
+  address?: Address;
   merchant: Merchant;
   token: string;
 }
@@ -36,7 +36,7 @@ const schema = new Schema<Customer>(
     address: {
       type: Schema.Types.ObjectId,
       ref: 'Address',
-      required: true,
+      required: false,
     },
     merchant: {
       type: Schema.Types.ObjectId,

@@ -18,7 +18,7 @@ export const formatCustomer = ({
   lastname,
   email,
   phoneNumber,
-  address: formatAddress(address),
+  address: address ? formatAddress(address) : undefined,
   totalSpend,
   orderCount,
   createdAt,

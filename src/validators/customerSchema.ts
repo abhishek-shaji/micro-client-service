@@ -8,7 +8,7 @@ export const customerSchema = yup
     lastname: yup.string().required(),
     email: yup.string().email().required(),
     phoneNumber: yup.string().required(),
-    address: addressSchema.required(),
+    address: addressSchema.default(undefined),
   })
   .noUnknown(true)
   .strict();

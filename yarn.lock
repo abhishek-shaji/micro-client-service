@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@abhishek-shaji/micro-common@^1.31.1":
-  version "1.32.1"
-  resolved "https://npm.pkg.github.com/download/@abhishek-shaji/micro-common/1.32.1/10f7d7d2fdc871298b7bf91cc09b0ec2f03cd013a24e653c94f4a41842f91a8e#a3fa8b1780d3b0f4c9aa4a65fdc5967a2c242720"
-  integrity sha512-iVOlzS9tSZEkiD2dzs8BE7hE5WkisbbvaKfPsfZP0vhaLby+qqevgc+EledXg8+WsBgNmVdGCCyJdNMtKfHtjg==
+"@abhishek-shaji/micro-common@^1.46.0":
+  version "1.46.0"
+  resolved "https://npm.pkg.github.com/download/@abhishek-shaji/micro-common/1.46.0/d2a579d7c9063cfe1ce57a2bc574d4eaf661777b52ff33da0aee78318f912153#30319eedf7d9ef99f4c4eb65915c1ffc257bc153"
+  integrity sha512-9LM+2fip0X9tbKRo7MaVF0rhKbcQoSTYTNCikz1tKLmxG9Tbnyf/pQhlvSPte5LEvO2yQmZczr7tWE3xU8AT8Q==
   dependencies:
     "@middy/core" "^2.5.7"
     "@middy/http-json-body-parser" "^2.5.7"
@@ -18,6 +18,7 @@
     middy-exception-handler "^1.4.4"
     middy-lesslog "^2.0.3"
     mongoose "^6.2.0"
+    mongoose-aggregate-paginate-v2 "^1.0.6"
     mongoose-paginate-v2 "^1.6.2"
     yup "^0.32.11"
 

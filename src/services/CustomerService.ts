@@ -2,10 +2,16 @@ import * as mongoose from 'mongoose';
 import { NotFoundException } from 'middy-exception-handler';
 
 import { CustomerModel, Customer } from '../models/Customer';
-import { AddressModel } from '@abhishek-shaji/micro-common/models/Address';
 import { AggregatePaginateResult } from 'mongoose';
+import { AddressService } from './AddressService';
 
 class CustomerService {
+  private addressService: AddressService;
+
+  constructor() {
+    this.addressService = new AddressService();
+  }
+
   async findCustomerById(customerId: string, populate = 'address') {
     const customer = await CustomerModel.findById(customerId).populate(populate);
 
@@ -17,10 +23,9 @@ class CustomerService {
   }
 
   async createCustomer({ address, ...restData }: any) {
-    const addressDocument = new AddressModel(address);
-    await addressDocument.save();
+    const addressDocument = address ? await this.addressService.create(address) : undefined;
 
-    const customer = new CustomerModel({ ...restData, address: addressDocument._id });
+    const customer = new CustomerModel({ ...restData, address: addressDocument?._id });
 
     await customer.save();
 
@@ -28,14 +33,20 @@ class CustomerService {
   }
 
   async updateCustomer(customer: Customer, { address, ...restData }: any) {
-    const addressDocument = await AddressModel.findById(customer.address._id);
-    addressDocument.$set(address);
-    await addressDocument.save();
+    let addressDocument = null;
 
-    customer.$set(restData);
+    if (address) {
+      addressDocument = customer.address?._id
+        ? await this.addressService.update(customer.address._id, address)
+        : await this.addressService.create(address);
+    }
+
+    customer.$set({
+      ...restData,
+      address: addressDocument,
+    });
+
     await customer.save();
-
-    customer.address = addressDocument;
 
     return customer;
   }
