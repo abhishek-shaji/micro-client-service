@@ -1,6 +1,6 @@
 {
   "name": "micro-customer-service",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Micro Customer Service",
   "main": "index.js",
   "repository": "git@github.com:abhishek-shaji/micro-customer-service.git",

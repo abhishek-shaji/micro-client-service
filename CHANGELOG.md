@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.3.0...v1.4.0) (2022-05-13)
+
+
+### Features
+
+* **master:** add takeaway option, make address optional ([d9cce70](https://github.com/abhishek-shaji/micro-customer-service/commit/d9cce7066f38b3199b6a8ea38692e1266d84ee60))
+
 # [1.3.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.2.0...v1.3.0) (2022-04-11)
 
 
