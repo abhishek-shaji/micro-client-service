@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.5.0...v1.5.1) (2023-04-09)
+
+
+### Bug Fixes
+
+* **master:** expose customer list endpoint to authenticted users only ([149137c](https://github.com/abhishek-shaji/micro-customer-service/commit/149137cff3d9976a2677f8c4e8172c4ab7dc6438))
+
 # [1.5.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.4.0...v1.5.0) (2023-04-09)
 
 
