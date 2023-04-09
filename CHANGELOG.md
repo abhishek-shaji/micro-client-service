@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.5.1...v1.6.0) (2023-04-09)
+
+
+### Features
+
+* **master:** minor improvements ([e7b2bef](https://github.com/abhishek-shaji/micro-customer-service/commit/e7b2befda6c4c1484559c2e72d115a5f99c4b5cf))
+
 ## [1.5.1](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.5.0...v1.5.1) (2023-04-09)
 
 
