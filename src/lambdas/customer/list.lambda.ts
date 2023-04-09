@@ -1,11 +1,15 @@
 import { StatusCodes } from 'http-status-codes';
 
 import {
-  Body,
   Param,
   Response,
   Query,
+  IsGranted,
 } from '@abhishek-shaji/micro-common/decorators';
+import {
+  AccessPermission,
+  Namespace,
+} from '@abhishek-shaji/micro-common/enums';
 import {
   createLambda,
   createPaginatedResponse,
@@ -19,6 +23,7 @@ import { OrderService } from '../../services/order.service';
 class CustomerList {
   constructor(private readonly orderService: OrderService) {}
 
+  @IsGranted(Namespace.customer, AccessPermission.read)
   @Response(StatusCodes.OK, createPaginatedResponse)
   async handler(
     @Param('merchantId', { isBsonId: true }) merchantId: string,
