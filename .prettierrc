@@ -1,4 +1,12 @@
 {
-  "printWidth": 100,
-  "singleQuote": true
+  "printWidth": 80,
+  "singleQuote": true,
+  "importOrder": [
+    "reflect-metadata",
+    "<THIRD_PARTY_MODULES>",
+    "^@abhishek-shaji/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
 }

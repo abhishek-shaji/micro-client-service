@@ -1,7 +1,8 @@
-import { OrderModel } from '../models/Order';
 import { AggregatePaginateResult } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { Customer } from '../models/Customer';
+
+import { Customer } from '../models/customer.model';
+import { OrderModel } from '../models/order.model';
 
 class OrderService {
   async findCustomersByConfirmedOrders(

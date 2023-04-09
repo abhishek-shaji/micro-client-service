@@ -1,9 +1,8 @@
-import { AggregatePaginateModel, Document, model, PaginateModel, Schema } from 'mongoose';
-import ShortUniqueId from 'short-unique-id';
+import { AggregatePaginateModel, Document, model, Schema } from 'mongoose';
 import mongoosePaginate from 'mongoose-aggregate-paginate-v2';
+import ShortUniqueId from 'short-unique-id';
 
-import { Address } from '@abhishek-shaji/micro-common/models/Address';
-import { Merchant } from '@abhishek-shaji/micro-common/models/Merchant';
+import { Address, Merchant } from '@abhishek-shaji/micro-common/models';
 
 class Customer extends Document {
   firstname: string;
@@ -60,6 +59,9 @@ const schema = new Schema<Customer>(
 
 schema.plugin(mongoosePaginate);
 
-const CustomerModel = model<Customer, AggregatePaginateModel<Customer>>('Customer', schema);
+const CustomerModel = model<Customer, AggregatePaginateModel<Customer>>(
+  'Customer',
+  schema
+);
 
 export { Customer, CustomerModel };

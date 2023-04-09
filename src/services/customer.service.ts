@@ -1,9 +1,10 @@
 import * as mongoose from 'mongoose';
-import { NotFoundException } from 'middy-exception-handler';
-
-import { CustomerModel, Customer } from '../models/Customer';
 import { AggregatePaginateResult } from 'mongoose';
-import { AddressService } from './AddressService';
+
+import { NotFoundException } from '@abhishek-shaji/micro-common/exceptions';
+
+import { CustomerModel, Customer } from '../models/customer.model';
+import { AddressService } from './address.service';
 
 class CustomerService {
   private addressService: AddressService;
@@ -12,8 +13,13 @@ class CustomerService {
     this.addressService = new AddressService();
   }
 
-  async findCustomerById(customerId: string, populate = 'address') {
-    const customer = await CustomerModel.findById(customerId).populate(populate);
+  async findCustomerById(
+    customerId: string,
+    populate = 'address'
+  ): Promise<any> {
+    const customer = await CustomerModel.findById(customerId).populate(
+      populate
+    );
 
     if (!customer) {
       throw new NotFoundException('Customer not found');
@@ -23,9 +29,14 @@ class CustomerService {
   }
 
   async createCustomer({ address, ...restData }: any) {
-    const addressDocument = address ? await this.addressService.create(address) : undefined;
+    const addressDocument = address
+      ? await this.addressService.create(address)
+      : undefined;
 
-    const customer = new CustomerModel({ ...restData, address: addressDocument?._id });
+    const customer = new CustomerModel({
+      ...restData,
+      address: addressDocument?._id,
+    });
 
     await customer.save();
 
@@ -68,7 +79,12 @@ class CustomerService {
         },
         { $sort: { createdAt: -1 } },
         {
-          $lookup: { from: 'addresses', localField: 'address', foreignField: '_id', as: 'address' },
+          $lookup: {
+            from: 'addresses',
+            localField: 'address',
+            foreignField: '_id',
+            as: 'address',
+          },
         },
         { $unwind: '$address' },
         { $group: { _id: '$email', user: { $last: '$$ROOT' } } },
