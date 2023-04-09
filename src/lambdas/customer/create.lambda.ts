@@ -12,7 +12,7 @@ import { CustomerService } from '../../services/customer.service';
 class CreateCustomer {
   constructor(private readonly customerService: CustomerService) {}
 
-  @Response(StatusCodes.OK)
+  @Response(StatusCodes.CREATED)
   async handler(
     @Param('merchantId', { isBsonId: true }) merchantId: string,
     @Body(CustomerSchema) body: CustomerSchema
