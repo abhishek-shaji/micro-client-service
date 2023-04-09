@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.4.0...v1.5.0) (2023-04-09)
+
+
+### Features
+
+* **master:** migrate customer-service to decorator approach ([8f90eab](https://github.com/abhishek-shaji/micro-customer-service/commit/8f90eab6d4e5e917bc6590b4e5d7636e78a72305))
+
 # [1.4.0](https://github.com/abhishek-shaji/micro-customer-service/compare/v1.3.0...v1.4.0) (2022-05-13)
 
 
