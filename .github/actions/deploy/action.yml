@@ -34,4 +34,4 @@ runs:
 
     - name: Deploy Lambda functions
       shell: bash
-      run: serverless deploy --stage ${{ inputs.env }}
+      run: yarn deploy --stage ${{ inputs.env }}

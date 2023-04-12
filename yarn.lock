@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@abhishek-shaji/micro-common@^1.64.0":
-  version "1.64.0"
-  resolved "https://npm.pkg.github.com/download/@abhishek-shaji/micro-common/1.64.0/2522cc03e9cd477e60fe9559ce4b18d10aa82500#2522cc03e9cd477e60fe9559ce4b18d10aa82500"
-  integrity sha512-nahRgHK2d7n8t3b1Pys1JnXlTJ2PdVrJreCQkdabtOeoAaqsa2CKQ4OOs1o6jdDGeLo8FgKzIifbWR/rxagYJg==
+"@abhishek-shaji/micro-common@^1.68.1":
+  version "1.68.1"
+  resolved "https://npm.pkg.github.com/download/@abhishek-shaji/micro-common/1.68.1/3194b51cbbc1148ae2ee4ed8701d67bc7cf6e81c#3194b51cbbc1148ae2ee4ed8701d67bc7cf6e81c"
+  integrity sha512-MuEwDhLIQb8Rl/BHIbdl57BIboKPE3xsmQ/CR0PrSFmIao30B44RlvSHsMoeF9744qtEqbtv6vDooeDSUS09mA==
   dependencies:
     "@types/aws-lambda" "^8.10.92"
     "@types/jsonwebtoken" "^8.5.8"

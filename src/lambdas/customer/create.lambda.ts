@@ -1,6 +1,11 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { Body, Param, Response } from '@abhishek-shaji/micro-common/decorators';
+import {
+  Body,
+  Param,
+  Response,
+  Recaptcha,
+} from '@abhishek-shaji/micro-common/decorators';
 import { createLambda } from '@abhishek-shaji/micro-common/utils';
 
 import { LambdaHandler } from '../../decorators/lambda-handler.decorator';
@@ -12,6 +17,7 @@ import { CustomerService } from '../../services/customer.service';
 class CreateCustomer {
   constructor(private readonly customerService: CustomerService) {}
 
+  @Recaptcha('CreateCustomer')
   @Response(StatusCodes.CREATED)
   async handler(
     @Param('merchantId', { isBsonId: true }) merchantId: string,

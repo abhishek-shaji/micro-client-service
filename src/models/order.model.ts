@@ -1,9 +1,29 @@
 import { AggregatePaginateModel, Document, model, Schema } from 'mongoose';
 import mongoosePaginate from 'mongoose-aggregate-paginate-v2';
 
-class Order extends Document {}
+import { Customer } from './customer.model';
 
-const schema = new Schema<Order>({});
+class Order extends Document {
+  token: string;
+  customer: Customer;
+  expiresAt: Date;
+}
+
+const schema = new Schema<Order>({
+  customer: {
+    type: Schema.Types.ObjectId,
+    ref: 'Customer',
+    required: false,
+  },
+  token: {
+    type: String,
+    required: true,
+  },
+  expiresAt: {
+    type: Date,
+    required: true,
+  },
+});
 
 schema.plugin(mongoosePaginate);
 

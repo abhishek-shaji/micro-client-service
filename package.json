@@ -7,11 +7,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "deploy": "serverless deploy",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "deploy": "./deploy.sh",
+    "deploy:local": "yarn deploy --aws-profile shophost"
   },
   "dependencies": {
-    "@abhishek-shaji/micro-common": "^1.64.0",
+    "@abhishek-shaji/micro-common": "^1.68.1",
     "@contentful/rich-text-html-renderer": "^15.12.1",
     "@types/jsonwebtoken": "^8.5.8",
     "aws-lambda": "^1.0.7",

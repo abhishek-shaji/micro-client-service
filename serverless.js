@@ -1,5 +1,3 @@
-const routes = require('./src/routes');
-
 module.exports = {
   service: 'micro-customer-service',
   provider: {
@@ -45,6 +43,7 @@ module.exports = {
       accountId: '${ssm:/new-relic-account-id}',
       apiKey: '${ssm:/new-relic-api-key}',
       enableFunctionLogs: true,
+      enableIntegration: true,
     },
     esbuild: {
       bundle: true,
@@ -74,5 +73,5 @@ module.exports = {
     ],
     include: ['src/**/*.ts', 'package.json', '!src/**/__tests__/**'],
   },
-  functions: routes,
+  functions: require('./src/functions'),
 };

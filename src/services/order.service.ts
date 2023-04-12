@@ -1,10 +1,31 @@
 import { AggregatePaginateResult } from 'mongoose';
 import * as mongoose from 'mongoose';
 
+import { UnauthorizedException } from '@abhishek-shaji/micro-common/exceptions';
+
 import { Customer } from '../models/customer.model';
 import { OrderModel } from '../models/order.model';
 
 class OrderService {
+  async validateToken(customerId, token?: string) {
+    if (!token) {
+      throw new UnauthorizedException('Token is required');
+    }
+
+    const order = await OrderModel.findOne({
+      customer: customerId,
+      token,
+    });
+
+    if (!order) {
+      throw new UnauthorizedException('Invalid token');
+    }
+
+    if (order.expiresAt < new Date()) {
+      throw new UnauthorizedException('Token expired');
+    }
+  }
+
   async findCustomersByConfirmedOrders(
     merchantId: string,
     options: any
