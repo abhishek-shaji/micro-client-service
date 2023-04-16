@@ -17,6 +17,7 @@ class ContentDTO {
     } else {
       this.data = {
         title: data.title,
+        featuredImage: data.featuredImage,
       };
     }
 
