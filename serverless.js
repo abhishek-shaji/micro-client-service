@@ -1,5 +1,5 @@
 module.exports = {
-  service: 'micro-customer-service',
+  service: 'micro-content-service',
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
@@ -9,7 +9,6 @@ module.exports = {
       ENV: '${opt:stage, "dev"}',
       DATABASE_URL: '${ssm:/database-url-${opt:stage, "dev"}}',
       JWT_SECRET: '${ssm:/jwt-secret-${opt:stage, "dev"}}',
-      RECAPTHA_PRIVATE_KEY: '${ssm:/recaptcha-private-key-${opt:stage, "dev"}}',
     },
     iamRoleStatements: [
       {
@@ -34,7 +33,7 @@ module.exports = {
     },
     customDomain: {
       domainName: '${self:custom.domainName.${opt:stage, "dev"}}',
-      basePath: 'customer',
+      basePath: 'content',
       stage: '${opt:stage, "dev"}',
       createRoute53Record: false,
     },

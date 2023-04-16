@@ -1,8 +1,8 @@
 {
-  "name": "micro-customer-service",
-  "version": "1.6.0",
-  "description": "Micro Customer Service",
-  "repository": "git@github.com:abhishek-shaji/micro-customer-service.git",
+  "name": "micro-content-service",
+  "version": "0.0.0-development",
+  "description": "Micro Content Service",
+  "repository": "git@github.com:abhishek-shaji/micro-content-service.git",
   "author": "Abhishek Shaji",
   "license": "MIT",
   "private": true,
