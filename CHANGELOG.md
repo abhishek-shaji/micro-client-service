@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.1.0...v1.2.0) (2023-04-16)
+
+
+### Features
+
+* **master:** add featuredImage to content dto ([b046d1f](https://github.com/abhishek-shaji/micro-client-service/commit/b046d1f8245b6ea82565a6e546b5ef0ed4cede7f))
+
 # [1.1.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.0.0...v1.1.0) (2023-04-16)
 
 
