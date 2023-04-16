@@ -1,5 +1,5 @@
 module.exports = {
-  service: 'micro-content-service',
+  service: 'micro-client-service',
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
@@ -33,7 +33,7 @@ module.exports = {
     },
     customDomain: {
       domainName: '${self:custom.domainName.${opt:stage, "dev"}}',
-      basePath: 'content',
+      basePath: 'client',
       stage: '${opt:stage, "dev"}',
       createRoute53Record: false,
     },

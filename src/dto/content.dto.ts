@@ -6,9 +6,20 @@ class ContentDTO {
   author: string;
   publishedAt: Date;
 
-  constructor({ _id, data, author, publishedAt }: Content) {
+  constructor(
+    { _id, data, author, publishedAt }: Content,
+    showContent?: boolean
+  ) {
     this.id = _id;
-    this.data = data;
+
+    if (showContent) {
+      this.data = data;
+    } else {
+      this.data = {
+        title: data.title,
+      };
+    }
+
     this.author = author;
     this.publishedAt = publishedAt;
   }

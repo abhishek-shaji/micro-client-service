@@ -1,8 +1,8 @@
 {
-  "name": "micro-content-service",
+  "name": "micro-client-service",
   "version": "0.0.0-development",
-  "description": "Micro Content Service",
-  "repository": "git@github.com:abhishek-shaji/micro-content-service.git",
+  "description": "Micro Client Service",
+  "repository": "git@github.com:abhishek-shaji/micro-client-service.git",
   "author": "Abhishek Shaji",
   "license": "MIT",
   "private": true,
