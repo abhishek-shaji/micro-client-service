@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.0.0...v1.1.0) (2023-04-16)
+
+
+### Features
+
+* **master:** switch to node-18 ([1d9dbd4](https://github.com/abhishek-shaji/micro-client-service/commit/1d9dbd432b34d39483c585573aaa9bf01889d71d))
+
 # 1.0.0 (2023-04-16)
 
 
