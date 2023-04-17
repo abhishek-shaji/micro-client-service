@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.2.0...v1.3.0) (2023-04-17)
+
+
+### Features
+
+* **master:** enable cors for all client side requests ([695fa84](https://github.com/abhishek-shaji/micro-client-service/commit/695fa8449cce03fa315105596cedd94aaf443c0c))
+
 # [1.2.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.1.0...v1.2.0) (2023-04-16)
 
 
