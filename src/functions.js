@@ -8,5 +8,5 @@ module.exports = {
   /*
    * Landing Page Data
    */
-  landing_page_data: http('GET', '/landing-page/{merchantId}', '/landing-page-data'),
+  landing_page_data: http('GET', '/landing-page/{merchantId}', '/landing-page-data', true),
 };

@@ -23,7 +23,7 @@ class GetLandingPageData {
     private readonly contentService: ContentService
   ) {}
 
-  @Response(StatusCodes.OK)
+  @Response(StatusCodes.OK, undefined, true)
   async handler(
     @Header('accept-language') locale: string,
     @Param('merchantId', { isBsonId: true }) merchantId: string,
