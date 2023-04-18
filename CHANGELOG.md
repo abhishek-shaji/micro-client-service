@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.4.0...v1.5.0) (2023-04-18)
+
+
+### Features
+
+* **master:** add promotion banners ([8b57d4e](https://github.com/abhishek-shaji/micro-client-service/commit/8b57d4eddfa4fbac00a2b13e4cc66227ea1166fb))
+
 # [1.4.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.3.0...v1.4.0) (2023-04-18)
 
 
