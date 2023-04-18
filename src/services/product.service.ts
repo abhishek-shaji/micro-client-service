@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+import { FileDTO } from '@abhishek-shaji/micro-common/dto';
 import { NotFoundException } from '@abhishek-shaji/micro-common/exceptions';
 import { createPaginatedResponse } from '@abhishek-shaji/micro-common/utils';
 
@@ -11,7 +12,7 @@ import '../models/modifier.model';
 import { OrderModel } from '../models/order.model';
 import '../models/product-category.model';
 import { ProductCategoryModel } from '../models/product-category.model';
-import { ProductModel } from '../models/product.model';
+import { Product, ProductModel } from '../models/product.model';
 
 class ProductService {
   private defaultPopulate = [
@@ -134,9 +135,10 @@ class ProductService {
       .populate(this.defaultPopulate)
       .limit(10);
 
-    return result.map((product) => ({
+    return result.map((product: Product) => ({
       id: product._id,
       name: product.get(`name.${locale}`),
+      thumbnail: new FileDTO(product.thumbnail),
     }));
   }
 
