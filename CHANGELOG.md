@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.6.0...v1.7.0) (2023-04-18)
+
+
+### Features
+
+* **master:** add missing thumbnail ([c645ff7](https://github.com/abhishek-shaji/micro-client-service/commit/c645ff74db3a2a7f9e9dfb4a455a8032bc58f910))
+
 # [1.6.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.5.0...v1.6.0) (2023-04-18)
 
 
