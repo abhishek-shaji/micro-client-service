@@ -29,7 +29,7 @@ class ContentService {
     showContent?: boolean
   ): Promise<ContentDTO[]> {
     const contentSchema = await ContentSchemaModel.findOne({
-      title: 'Blog',
+      title: 'Promotion Banner',
       merchant: merchantId,
     });
 

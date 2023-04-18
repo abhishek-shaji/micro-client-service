@@ -74,6 +74,11 @@ class GetLandingPageData {
       response.blogs = await this.contentService.getBlogsByMerchant(merchantId);
     }
 
+    if (modulesArray.includes('promotionBanners')) {
+      response.promotionBanners =
+        await this.contentService.getPromotionBannersByMerchant(merchantId);
+    }
+
     return response;
   }
 }
