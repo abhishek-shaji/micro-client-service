@@ -42,7 +42,7 @@ module.exports = {
       accountId: '${ssm:/new-relic-account-id}',
       apiKey: '${ssm:/new-relic-api-key}',
       enableFunctionLogs: true,
-      enableIntegration: true,
+      enableIntegration: false,
     },
     esbuild: {
       bundle: true,

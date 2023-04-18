@@ -23,6 +23,27 @@ class ContentService {
 
     return blogs.map((blog) => new ContentDTO(blog, showContent));
   }
+
+  async getPromotionBannersByMerchant(
+    merchantId: string,
+    showContent?: boolean
+  ): Promise<ContentDTO[]> {
+    const contentSchema = await ContentSchemaModel.findOne({
+      title: 'Blog',
+      merchant: merchantId,
+    });
+
+    if (!contentSchema) {
+      return [];
+    }
+
+    const blogs = await ContentModel.find({
+      merchant: merchantId,
+      contentSchema: contentSchema._id,
+    });
+
+    return blogs.map((blog) => new ContentDTO(blog, showContent));
+  }
 }
 
 export { ContentService };

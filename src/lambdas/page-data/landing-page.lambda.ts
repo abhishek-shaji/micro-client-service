@@ -8,11 +8,11 @@ import {
 } from '@abhishek-shaji/micro-common/decorators';
 import { createLambda } from '@abhishek-shaji/micro-common/utils';
 
-import { LambdaHandler } from '../decorators/lambda-handler.decorator';
-import { ContentService } from '../services/content.service';
-import { MerchantService } from '../services/merchant.service';
-import { ProductCategoryService } from '../services/product-category.service';
-import { ProductService } from '../services/product.service';
+import { LambdaHandler } from '../../decorators/lambda-handler.decorator';
+import { ContentService } from '../../services/content.service';
+import { MerchantService } from '../../services/merchant.service';
+import { ProductCategoryService } from '../../services/product-category.service';
+import { ProductService } from '../../services/product.service';
 
 @LambdaHandler()
 class GetLandingPageData {

@@ -16,7 +16,7 @@ export class ProductDTO {
   availableQuantity: number | undefined;
   publishedAt: Date;
   currency: string;
-  productCategories: string[];
+  productCategories: { name: string; id: any }[];
   images: FileDTO[];
   modifierLists: any[];
 
@@ -45,7 +45,13 @@ export class ProductDTO {
     this.availableQuantity = availableQuantity;
     this.publishedAt = publishedAt;
     this.currency = currency;
-    this.productCategories = productCategories.map(({ _id }) => _id);
+    this.productCategories = productCategories.map((productCategory) => {
+      return {
+        id: productCategory._id,
+        name: productCategory.get(`name.${locale}`),
+        slug: productCategory.slug,
+      };
+    });
     this.images = images && images.map((image) => new FileDTO(image));
     this.modifierLists = modifierLists?.length
       ? modifierLists.map(
