@@ -76,7 +76,10 @@ class GetLandingPageData {
 
     if (modulesArray.includes('promotionBanners')) {
       response.promotionBanners =
-        await this.contentService.getPromotionBannersByMerchant(merchantId);
+        await this.contentService.getPromotionBannersByMerchant(
+          merchantId,
+          true
+        );
     }
 
     return response;
