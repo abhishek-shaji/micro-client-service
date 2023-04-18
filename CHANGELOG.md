@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.5.0...v1.6.0) (2023-04-18)
+
+
+### Features
+
+* **master:** show content ([a10772c](https://github.com/abhishek-shaji/micro-client-service/commit/a10772cda1916aa951ad899bc4166f20213366f2))
+
 # [1.5.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.4.0...v1.5.0) (2023-04-18)
 
 
