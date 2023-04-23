@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.7.0...v1.8.0) (2023-04-23)
+
+
+### Features
+
+* **master:** add endpoint for getting content by api identifiers ([259fd68](https://github.com/abhishek-shaji/micro-client-service/commit/259fd682dcd35fd981393d84b06b199fb24058f3))
+
 # [1.7.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.6.0...v1.7.0) (2023-04-18)
 
 
