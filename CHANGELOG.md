@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.8.0...v1.9.0) (2023-04-23)
+
+
+### Features
+
+* **master:** to lowercase ([ac856aa](https://github.com/abhishek-shaji/micro-client-service/commit/ac856aaeb78c163ff985c7d7abe08aae4d146ba0))
+
 # [1.8.0](https://github.com/abhishek-shaji/micro-client-service/compare/v1.7.0...v1.8.0) (2023-04-23)
 
 
