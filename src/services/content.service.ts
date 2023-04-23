@@ -60,7 +60,7 @@ class ContentService {
   ): Promise<ContentDTO[]> {
     const contentSchema = await ContentSchemaModel.findOne({
       merchant: merchantId,
-      apiIdentifier,
+      apiIdentifier: apiIdentifier.toLowerCase(),
     });
 
     if (!contentSchema) {
