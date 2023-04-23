@@ -8,6 +8,8 @@ import { validateConfig } from '../utils/validateConfig.util';
 
 class ContentSchema extends Document {
   title: string;
+  apiIdentifier: string;
+  description?: string;
   config: ContentSchemaConfig;
   merchant: Merchant;
 }
@@ -17,6 +19,14 @@ const schema = new Schema<ContentSchema>(
     title: {
       type: String,
       required: true,
+    },
+    apiIdentifier: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: false,
     },
     config: {
       type: Schema.Types.Mixed,

@@ -15,4 +15,8 @@ module.exports = {
    * Search
    */
   search_products: http('GET', '/search/products/{merchantId}', '/search/products', true),
+  /*
+   * Content
+   */
+  get_content: http('GET', '/content/{merchantId}', '/content/get', true),
 };

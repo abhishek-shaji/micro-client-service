@@ -1,5 +1,13 @@
+import {
+  BadRequestException,
+  NotFoundException,
+} from '@abhishek-shaji/micro-common/exceptions';
+
 import { ContentDTO } from '../dto/content.dto';
-import { ContentSchemaModel } from '../models/content-schema.model';
+import {
+  ContentSchema,
+  ContentSchemaModel,
+} from '../models/content-schema.model';
 import { ContentModel } from '../models/content.model';
 
 class ContentService {
@@ -43,6 +51,50 @@ class ContentService {
     });
 
     return blogs.map((blog) => new ContentDTO(blog, showContent));
+  }
+
+  private async getContentByApiIdentifier(
+    merchantId: string,
+    apiIdentifier: string,
+    limit: number = 10
+  ): Promise<ContentDTO[]> {
+    const contentSchema = await ContentSchemaModel.findOne({
+      merchant: merchantId,
+      apiIdentifier,
+    });
+
+    if (!contentSchema) {
+      throw new NotFoundException(
+        `Content Type with API Identifier ${apiIdentifier} not found`
+      );
+    }
+
+    const contents = await ContentModel.find({
+      merchant: merchantId,
+      contentSchema: contentSchema._id,
+    }).limit(limit);
+
+    return contents.map((content) => new ContentDTO(content));
+  }
+
+  async getContentByContentIds(
+    merchantId: string,
+    apiIdentifiers: string[],
+    limit: number = 10
+  ) {
+    const response = {};
+
+    await Promise.all(
+      apiIdentifiers.map(async (id: string): Promise<void> => {
+        response[id] = await this.getContentByApiIdentifier(
+          merchantId,
+          id,
+          limit
+        );
+      })
+    );
+
+    return response;
   }
 }
 

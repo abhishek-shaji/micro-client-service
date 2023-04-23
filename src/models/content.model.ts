@@ -12,6 +12,7 @@ class Content extends Document {
   merchant: Merchant;
   contentSchema: ContentSchema;
   publishedAt?: Date;
+  createdAt: Date;
 }
 
 const schema = new Schema<Content>(
