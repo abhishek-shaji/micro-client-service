@@ -57,7 +57,7 @@ class ContentService {
     merchantId: string,
     apiIdentifier: string,
     limit: number = 10
-  ): Promise<ContentDTO[]> {
+  ): Promise<ContentDTO[] | ContentDTO> {
     const contentSchema = await ContentSchemaModel.findOne({
       merchant: merchantId,
       apiIdentifier: apiIdentifier.toLowerCase(),
@@ -74,7 +74,15 @@ class ContentService {
       contentSchema: contentSchema._id,
     }).limit(limit);
 
-    return contents.map((content) => new ContentDTO(content));
+    if (contents.length === 0) {
+      return contentSchema.entryType === 'single' ? undefined : [];
+    }
+
+    if (contentSchema.entryType === 'single') {
+      return new ContentDTO(contents[0], true);
+    }
+
+    return contents.map((content) => new ContentDTO(content, true));
   }
 
   async getContentByContentIds(

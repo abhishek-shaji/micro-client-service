@@ -10,6 +10,7 @@ class ContentSchema extends Document {
   title: string;
   apiIdentifier: string;
   description?: string;
+  entryType: 'single' | 'multiple';
   config: ContentSchemaConfig;
   merchant: Merchant;
 }
@@ -27,6 +28,12 @@ const schema = new Schema<ContentSchema>(
     description: {
       type: String,
       required: false,
+    },
+    entryType: {
+      type: String,
+      enum: ['single', 'multiple'],
+      required: true,
+      default: 'multiple',
     },
     config: {
       type: Schema.Types.Mixed,
